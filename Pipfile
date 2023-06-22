@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+locust = "*"
+configparser = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "2.7"
+
+[scripts]
+test = "locust -f tests/blaze_demo.py --config=master.conf --env=dev --html=reports/report.html --logfilr reports/testlogs.log"
+step-load = "locust -f tests/blaze_demo.py ,utils/step_loadshape.py --headleass  --html=reports/report.html"
+base-image = "docker build -t blazedemo/locust:v1 -f Base.Dockerfile"
+locust-image = "docker build -t repo/locust:v1 -f Dockerfile"
+helm-install = "helm upgrade --install local-perf-locust locust-helm-chart --set image.tag=repo/locust:v1 --namespace locust"
+helm-uninstall = "helm uninstall local-perf-locust -n locust"
+
