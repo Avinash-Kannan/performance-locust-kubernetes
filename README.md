@@ -9,14 +9,14 @@
 - Draft a locust test skeleton
 - pull locust image
    Run => `docker pull locustio/locust`
-- build required docker image
-   Run => `docker build -t blazedemo/locust:v2 .`
+- Create a docker file with base image as locust including required test skeleton and build docker image using below command
+   Run => `docker build -t blazedemo/locust:v1 .`
 - Minikube is a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node
    Run => `minikube start`
-- Create a namespace for the local cluster 
+- Create a namespace for the local cluster   
    Run => `kubectl create namespace locust`
 - To deploy helm templates
-   Run => `helm upgrade --install local-perf-locust locust-helm-chart --set image.tag=v2 --namespace locust`
+   Run => `helm upgrade --install local-perf-locust locust-helm-chart --set image.tag=v3 --namespace locust`
 - Check if master and worker pods are up and running 
    => `kubectl get pods -n locust`
 - Log into Pods
